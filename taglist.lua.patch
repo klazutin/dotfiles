@@ -1,0 +1,24 @@
+--- taglist.lua.org	2012-11-14 01:43:37.000000000 +0000
++++ taglist.lua	2013-03-20 20:39:14.000000000 +0000
+@@ -126,10 +126,6 @@
+     local icon
+     local bg_resize = false
+     local is_selected = false
+-    if t.selected then
+-        bg_color = bg_focus
+-        fg_color = fg_focus
+-    end
+     if sel and sel.type ~= "desktop" then
+         if taglist_squares_sel then
+             -- Check that the selected clients is tagged with 't'.
+@@ -162,6 +158,10 @@
+             end
+         end
+     end
++    if t.selected then
++        bg_color = bg_focus
++        fg_color = fg_focus
++    end
+     if not tag.getproperty(t, "icon_only") then
+         if fg_color then
+             text = text .. "<span color='"..util.color_strip_alpha(fg_color).."'>"
