@@ -1,0 +1,17 @@
+--- xvd_mixer.c.old	2012-11-03 22:50:41.914846816 +0000
++++ xvd_mixer.c	2012-11-03 23:16:34.045155736 +0000
+@@ -414,8 +414,13 @@
+ 					volumes[i] = Inst->track->min_volume;
+ 			}
+ 			xvd_calculate_avg_volume (Inst, volumes, Inst->track->num_channels);
+-		
++
+ 			gst_mixer_set_volume (GST_MIXER (Inst->card), Inst->track, volumes);
++			if (Inst->muted) {
++				gst_mixer_set_mute (GST_MIXER (Inst->card), Inst->track, !(GST_MIXER_TRACK_HAS_FLAG (Inst->track, GST_MIXER_TRACK_MUTE)));
++				Inst->muted = (GST_MIXER_TRACK_HAS_FLAG (Inst->track, GST_MIXER_TRACK_MUTE));
++			}
++
+ 			g_free (volumes);
+ 		
+ 			return TRUE;

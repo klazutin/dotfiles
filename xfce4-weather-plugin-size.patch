@@ -1,0 +1,29 @@
+--- weather.c.old	2012-11-04 00:43:37.673817512 +0000
++++ weather.c	2012-11-04 01:03:48.015175625 +0000
+@@ -108,19 +108,19 @@
+     /* use small label with low number of columns in deskbar mode */
+     if (data->panel_orientation == XFCE_PANEL_PLUGIN_MODE_DESKBAR)
+         if (data->panel_size > 99)
+-            return "medium";
++            return "large";
+         else if (data->panel_size > 79)
+-            return "small";
++            return "medium";
+         else
+-            return "x-small";
++            return "small";
+     else
+ #endif
+-        if (data->panel_size > 25)
++        if (data->panel_size > 30)
++            return "large";
++        else if (data->panel_size > 17)
+             return "medium";
+-        else if (data->panel_size > 23)
+-            return "small";
+         else
+-            return "x-small";
++            return "small";
+ }
+ 
+ 
