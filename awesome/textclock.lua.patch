@@ -1,0 +1,11 @@
+--- textclock.lua.org	2012-11-14 01:43:37.000000000 +0000
++++ textclock.lua	2013-03-20 20:39:38.000000000 +0000
+@@ -19,7 +19,7 @@
+ -- @return A textbox widget.
+ function new(args, format, timeout)
+     local args = args or {}
+-    local format = format or " %a %b %d, %H:%M "
++    local format = format or " %a %b %d, <span weight='bold'>%H:%M</span> "
+     local timeout = timeout or 60
+     args.type = "textbox"
+     local w = capi.widget(args)

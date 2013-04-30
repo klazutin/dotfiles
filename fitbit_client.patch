@@ -1,0 +1,59 @@
+--- fitbit_client.py	2013-01-05 22:03:30.338311408 +0000
++++ ./fitbit_client.py.er	2013-01-05 19:58:12.376987802 +0000
+@@ -91,28 +91,26 @@
+     def __init__(self):
+         self.info_dict = {}
+         self.fitbit = None
+-        for base in [bc(debug=self.DEBUG) for bc in self.BASES]:
+-            for retries in (2,1,0):
+-                try:
+-                    if base.open():
+-                        print "Found %s base" % (base.NAME,)
+-                        self.fitbit = FitBit(base)
+-                        self.remote_info = None
+-                        break
+-                    else:
+-                        break
+-                except Exception, e:
+-                    print e
+-                    if retries:
+-                        print "retrying"
+-                        time.sleep(5)
+-            else:
+-                raise
+-            if self.fitbit:
+-                break
+-        if not self.fitbit:
+-            print "No devices connected!"
+-            exit(1)
++	print "Waiting for devices..."
++	while not self.fitbit:
++	        for base in [bc(debug=self.DEBUG) for bc in self.BASES]:
++	            for retries in (2,1,0):
++        	        try:
++                	    if base.open():
++                        	print "Found %s base" % (base.NAME,)
++	                        self.fitbit = FitBit(base)
++	                        self.remote_info = None
++        	                break
++                	    else:
++	                        break
++        	        except Exception, e:
++                	    print e
++	                    if retries:
++        	                print "retrying"
++                	        time.sleep(5)
++	            else:
++	                raise
++		time.sleep(5)
+ 
+     def form_base_info(self):
+         self.info_dict.clear()
+@@ -181,5 +179,4 @@
+             print "normal finish"
+             print "restarting..."
+     
+-    #sys.exit(main())
+-
++    #sys.exit(main())
+\ No newline at end of file

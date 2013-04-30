@@ -1,0 +1,11 @@
+--- tasklist.lua.org	2012-11-14 01:43:37.000000000 +0000
++++ tasklist.lua	2013-04-06 10:55:40.000000000 +0100
+@@ -31,7 +31,7 @@
+     for k, c in ipairs(clients) do
+         if not (c.skip_taskbar or c.hidden
+             or c.type == "splash" or c.type == "dock" or c.type == "desktop") then
+-            table.insert(shownclients, c)
++            table.insert(shownclients,1,c)
+         end
+     end
+     clients = shownclients
