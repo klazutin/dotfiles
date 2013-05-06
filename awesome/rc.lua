@@ -197,7 +197,7 @@ gmail= widget ({type="textbox"})
 gmail.text = '<span font_desc="Sans 16">✉</span>'
 
 -- function hook_gmail(widget)
---   local f = os.execute("time curl -u klazutin:jxvrrlpardcqrhpv --silent 'https://mail.google.com/mail/feed/atom' | grep -c '<entry>'")
+--   local f = os.execute("time curl -u klazutin:password --silent 'https://mail.google.com/mail/feed/atom' | grep -c '<entry>'")
 --   if f==0 then
 --     widget.text = '<span font_desc="Sans 16" color="#ff0000">✉</span>'
 --   else
